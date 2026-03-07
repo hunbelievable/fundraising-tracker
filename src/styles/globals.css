@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+/* ── Design tokens ──────────────────────────────────────── */
+:root {
+  --bg:     #0c0a07;
+  --panel:  #161210;
+  --border: rgba(255, 255, 255, 0.07);
+  --gold:   #d4a820;
+  --white:  #f0ece0;
+  --dim:    #6b5a3a;
+}
+
+/* ── Base ───────────────────────────────────────────────── */
+html { background: var(--bg); }
+
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  background-image: radial-gradient(ellipse at 50% 0%, rgba(212,168,32,.06) 0%, transparent 55%);
+  background-attachment: fixed;
+  color: var(--white);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+a { color: var(--gold); text-decoration: none; }
+a:hover { color: var(--white); text-decoration: underline; }
+
+ul { list-style: none; padding: 0; }
+li { margin-bottom: 0.5rem; }
+
+/* ── Typography helpers ─────────────────────────────────── */
+.font-bebas {
+  font-family: 'Bebas Neue', serif;
+  letter-spacing: 0.04em;
+}
+
+.dm-mono {
+  font-family: 'DM Mono', monospace;
+}
+
+.eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+}
+
+.sec {
+  font-family: 'Bebas Neue', serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  color: var(--gold);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Panels & stat cards ────────────────────────────────── */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+
+.stat-value {
+  font-family: 'Bebas Neue', serif;
+  font-size: 2.2rem;
+  line-height: 1;
+  color: var(--gold);
+}
+
+.stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--dim);
+  margin-top: 0.4rem;
+}
+
+/* ── Tables ─────────────────────────────────────────────── */
+.tbl-wrap {
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.tbl-wrap table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--panel);
+}
+
+.tbl-wrap th {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  background: #0e0b09;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+
+.tbl-wrap td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--white);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+}
+
+.tbl-wrap tr:last-child td { border-bottom: none; }
+
+.tbl-wrap tbody tr:hover td {
+  background: rgba(212,168,32,.04);
+  transition: background 0.12s;
+}
+
+/* Medal rows */
+.tbl-wrap .row-gold   td { background: rgba(212,168,32,.09); }
+.tbl-wrap .row-silver td { background: rgba(180,180,180,.05); }
+.tbl-wrap .row-bronze td { background: rgba(180,100,40,.07); }
+.tbl-wrap .row-gold:hover   td { background: rgba(212,168,32,.16) !important; }
+.tbl-wrap .row-silver:hover td { background: rgba(180,180,180,.09) !important; }
+.tbl-wrap .row-bronze:hover td { background: rgba(180,100,40,.11) !important; }
+
+/* Alignment helpers inside tables */
+.tbl-wrap .center { text-align: center; }
+.tbl-wrap .right  { text-align: right; }
+
+/* ── Links ──────────────────────────────────────────────── */
+.gold-link {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 500;
+}
+.gold-link:hover {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/* ── Nav tabs ───────────────────────────────────────────── */
+.nav-tab-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  padding: 0.35rem 0.85rem;
+  border-radius: 100px;
+  text-decoration: none !important;
+  transition: color 0.15s, background 0.15s;
+  display: inline-block;
+}
+.nav-tab-link:hover {
+  color: var(--gold) !important;
+  background: rgba(212,168,32,.08);
+}
+
+/* ── Nav cards (home page) ──────────────────────────────── */
+.nav-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--dim);
+  text-decoration: none !important;
+  transition: border-color 0.15s, color 0.15s;
+}
+.nav-card:hover {
+  border-color: rgba(212,168,32,.35) !important;
+  color: var(--gold) !important;
+}
+
+/* ── Form inputs ────────────────────────────────────────── */
+.dark-input {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.85rem;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 0.5rem;
+  color: var(--white);
+  padding: 0.65rem 1rem;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.15s;
+}
+.dark-input::placeholder { color: var(--dim); }
+.dark-input:focus { border-color: var(--gold); }
+
+/* ── Back link ──────────────────────────────────────────── */
+.back-link {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--dim);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.back-link:hover {
+  color: var(--gold);
+  text-decoration: none !important;
+}

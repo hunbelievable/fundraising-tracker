@@ -1,0 +1,314 @@
+{
+  "years": [
+    {
+      "year": 2020,
+      "champion": "Ryan Saunders",
+      "notes": "Melee was created in 2020 for Covid and was done virtually over Zoom.",
+      "sponsor": null,
+      "bracket": {
+        "left": {
+          "topRegion": {
+            "name": "Larry Bird Regional",
+            "r16": [
+              { "p1": "Cory Lesley",   "p2": "Tom Brantley",   "winner": "Tom Brantley"   },
+              { "p1": "Noe Guardado",  "p2": "Ryan Saunders",  "winner": "Ryan Saunders"  }
+            ],
+            "qf": { "p1": "Tom Brantley", "p2": "Ryan Saunders", "winner": "Ryan Saunders" }
+          },
+          "bottomRegion": {
+            "name": "Rollie Fingers Regional",
+            "r16": [
+              { "p1": "Christian Collamore", "p2": "Bruce Anderson", "winner": "Bruce Anderson" },
+              { "p1": "Tyson Wiegel",         "p2": "Adam Perez",     "winner": "Adam Perez"     }
+            ],
+            "qf": { "p1": "Bruce Anderson", "p2": "Adam Perez", "winner": "Bruce Anderson" }
+          },
+          "sf": { "p1": "Ryan Saunders", "p2": "Bruce Anderson", "winner": "Ryan Saunders" }
+        },
+        "right": {
+          "topRegion": {
+            "name": "Joe Namath Regional",
+            "r16": [
+              { "p1": "Matt Tennant",   "p2": "Todd Hansen",   "winner": "Matt Tennant"  },
+              { "p1": "Michael Young",  "p2": "Doug Couron",   "winner": "Doug Couron"   }
+            ],
+            "qf": { "p1": "Matt Tennant", "p2": "Doug Couron", "winner": "Matt Tennant" }
+          },
+          "bottomRegion": {
+            "name": "Lanny McDonald Regional",
+            "r16": [
+              { "p1": "Eric Depue",   "p2": "Ryan Conway",   "winner": "Eric Depue"   },
+              { "p1": "Brian Moore",  "p2": "James Thiele",  "winner": "Brian Moore"  }
+            ],
+            "qf": { "p1": "Eric Depue", "p2": "Brian Moore", "winner": "Brian Moore" }
+          },
+          "sf": { "p1": "Matt Tennant", "p2": "Brian Moore", "winner": "Brian Moore" }
+        },
+        "final": { "p1": "Ryan Saunders", "p2": "Brian Moore", "winner": "Ryan Saunders" }
+      },
+      "playIn": null
+    },
+    {
+      "year": 2021,
+      "champion": "Greg Graham",
+      "notes": "First year the All Valley Tournament Bracket was used. No regions created — top 16 ranked by money raised.",
+      "sponsor": "Truly Hard Seltzer ($1,000 to winner)",
+      "bracket": {
+        "left": {
+          "topRegion": {
+            "name": null,
+            "r16": [
+              { "p1": "Shahab Abdessalam", "p1Seed": 1,  "p2": "Steve Arquitte",    "p2Seed": 16, "winner": "Steve Arquitte"    },
+              { "p1": "Cory Lesley",        "p1Seed": 8,  "p2": "Michael Shumpert",  "p2Seed": 9,  "winner": "Michael Shumpert"  }
+            ],
+            "qf": { "p1": "Steve Arquitte", "p2": "Michael Shumpert", "winner": "Steve Arquitte" }
+          },
+          "bottomRegion": {
+            "name": null,
+            "r16": [
+              { "p1": "Nick Phillips", "p1Seed": 4,  "p2": "Chris Pflaum",  "p2Seed": 13, "winner": "Chris Pflaum"  },
+              { "p1": "Ian Rennels",   "p1Seed": 5,  "p2": "Doug Couron",   "p2Seed": 12, "winner": "Ian Rennels"   }
+            ],
+            "qf": { "p1": "Chris Pflaum", "p2": "Ian Rennels", "winner": "Chris Pflaum" }
+          },
+          "sf": { "p1": "Steve Arquitte", "p2": "Chris Pflaum", "winner": "Steve Arquitte" }
+        },
+        "right": {
+          "topRegion": {
+            "name": null,
+            "r16": [
+              { "p1": "Chuck Lewis",  "p1Seed": 2,  "p2": "Warren Whitted", "p2Seed": 15, "winner": "Chuck Lewis"  },
+              { "p1": "Ben Deas",     "p1Seed": 7,  "p2": "Josh Knop",      "p2Seed": 10, "winner": "Ben Deas"     }
+            ],
+            "qf": { "p1": "Chuck Lewis", "p2": "Ben Deas", "winner": "Ben Deas" }
+          },
+          "bottomRegion": {
+            "name": null,
+            "r16": [
+              { "p1": "Brian Moore",    "p1Seed": 3,  "p2": "Greg Graham",   "p2Seed": 14, "winner": "Greg Graham"   },
+              { "p1": "Benny Chandler", "p1Seed": 6,  "p2": "Doug Seaman",   "p2Seed": 11, "winner": "Doug Seaman"   }
+            ],
+            "qf": { "p1": "Greg Graham", "p2": "Doug Seaman", "winner": "Greg Graham" }
+          },
+          "sf": { "p1": "Ben Deas", "p2": "Greg Graham", "winner": "Greg Graham" }
+        },
+        "final": { "p1": "Steve Arquitte", "p2": "Greg Graham", "winner": "Greg Graham" }
+      },
+      "playIn": null
+    },
+    {
+      "year": 2022,
+      "champion": "Tom Ziegler",
+      "notes": "First year with the Championship Belt. First time the board seated brackets by best match-ups. Melee Match and Derby sponsored by Jon Zeek! Meyers. Top Derby spot (Brian Moore) received an additional $3,000 added to his total.",
+      "sponsor": "Jon Zeek! Meyers",
+      "bracket": {
+        "left": {
+          "topRegion": {
+            "name": "New Blue Tux Guys Region",
+            "r16": [
+              { "p1": "Kyle Kalinosky", "p2": "Alex Moore",   "winner": "Kyle Kalinosky" },
+              { "p1": "David Ross",     "p2": "Tom Ziegler",  "winner": "Tom Ziegler"    }
+            ],
+            "qf": { "p1": "Kyle Kalinosky", "p2": "Tom Ziegler", "winner": "Tom Ziegler" }
+          },
+          "bottomRegion": {
+            "name": "Former Sweetest Region",
+            "r16": [
+              { "p1": "Shahab Abdessalam",            "p2": "Nick Phillips", "winner": "Shahab Abdessalam"  },
+              { "p1": "Tom Rosencrans (Ryan Herrick)", "p2": "Eric Depue",    "winner": "Ryan Herrick"       }
+            ],
+            "qf": { "p1": "Shahab Abdessalam", "p2": "Ryan Herrick", "winner": "Ryan Herrick" }
+          },
+          "sf": { "p1": "Tom Ziegler", "p2": "Ryan Herrick", "winner": "Tom Ziegler" }
+        },
+        "right": {
+          "topRegion": {
+            "name": "Stachey Winners Region",
+            "r16": [
+              { "p1": "Jaymes Sime",  "p2": "Warren Whitted", "winner": "Warren Whitted" },
+              { "p1": "Brian Moore",  "p2": "Greg Graham",     "winner": "Brian Moore"    }
+            ],
+            "qf": { "p1": "Warren Whitted", "p2": "Brian Moore", "winner": "Warren Whitted" }
+          },
+          "bottomRegion": {
+            "name": "The Leftovers Region",
+            "r16": [
+              { "p1": "Jeff Hardy",      "p2": "Bruce Anderson", "winner": "Jeff Hardy"      },
+              { "p1": "John Lehotyak",   "p2": "Cory Lesley",    "winner": "John Lehotyak"   }
+            ],
+            "qf": { "p1": "Jeff Hardy", "p2": "John Lehotyak", "winner": "John Lehotyak" }
+          },
+          "sf": { "p1": "Warren Whitted", "p2": "John Lehotyak", "winner": "Warren Whitted" }
+        },
+        "final": { "p1": "Tom Ziegler", "p2": "Warren Whitted", "winner": "Tom Ziegler" }
+      },
+      "playIn": null
+    },
+    {
+      "year": 2023,
+      "champion": "Jeff Hardy",
+      "notes": "Sponsored by Premier Distributing (Jamey Holiday) — winner received $1,000 and the Melee Championship Belt.",
+      "sponsor": "Premier Distributing",
+      "bracket": {
+        "left": {
+          "topRegion": {
+            "name": "Rookie Royale (With Cheese)",
+            "r16": [
+              { "p1": "Warren Whitted",  "p2": "Kyle Kalinosky", "winner": "Warren Whitted" },
+              { "p1": "Tim Vanderpool",  "p2": "Guy Rudloff",    "winner": "Guy Rudloff"    }
+            ],
+            "qf": { "p1": "Warren Whitted", "p2": "Guy Rudloff", "winner": "Guy Rudloff" }
+          },
+          "bottomRegion": {
+            "name": "Winners and \"Winners\"",
+            "r16": [
+              { "p1": "Rob Seward",    "p2": "Tom Rosencrans", "winner": "Tom Rosencrans" },
+              { "p1": "Tom Ziegler",  "p2": "Cory Lesley",    "winner": "Tom Ziegler"    }
+            ],
+            "qf": { "p1": "Tom Rosencrans", "p2": "Tom Ziegler", "winner": "Tom Rosencrans" }
+          },
+          "sf": { "p1": "Guy Rudloff", "p2": "Tom Rosencrans", "winner": "Tom Rosencrans" }
+        },
+        "right": {
+          "topRegion": {
+            "name": "Sweetest v. [grunt noise]",
+            "r16": [
+              { "p1": "Greg Graham", "p2": "Jeff Hardy",  "winner": "Jeff Hardy"  },
+              { "p1": "Sam Snider",  "p2": "Dave Ross",   "winner": "Sam Snider"  }
+            ],
+            "qf": { "p1": "Jeff Hardy", "p2": "Sam Snider", "winner": "Jeff Hardy" }
+          },
+          "bottomRegion": {
+            "name": "Generic White Guy 1st Names",
+            "r16": [
+              { "p1": "Mike Altschuld",   "p2": "John Lehotyak",   "winner": "Mike Altschuld"  },
+              { "p1": "Brian Sorensen",   "p2": "Alex Moore",       "winner": "Alex Moore"      }
+            ],
+            "qf": { "p1": "Mike Altschuld", "p2": "Alex Moore", "winner": "Alex Moore" }
+          },
+          "sf": { "p1": "Jeff Hardy", "p2": "Alex Moore", "winner": "Jeff Hardy" }
+        },
+        "final": { "p1": "Tom Rosencrans", "p2": "Jeff Hardy", "winner": "Jeff Hardy" }
+      },
+      "playIn": null
+    },
+    {
+      "year": 2024,
+      "champion": "Sam Snider",
+      "notes": "First year with a Rookie play-in bracket and a 2–4 year grower play-in bracket. First time for play-in games in the Melee. Charlie Wilkins earned his spot by defeating Shawn Cullinane at Trivia Night. Warren Whitted was replaced by substitute Nick Phillips.",
+      "sponsor": "High Noon & Johnson Brothers Distributing",
+      "bracket": {
+        "left": {
+          "topRegion": {
+            "name": "The Cher Division",
+            "r16": [
+              { "p1": "Michael Shumpert", "p2": "Ryan Asbury",    "winner": "Ryan Asbury"    },
+              { "p1": "Tom Rosencrans",   "p2": "Jeff Hardy",      "winner": "Tom Rosencrans" }
+            ],
+            "qf": { "p1": "Ryan Asbury", "p2": "Tom Rosencrans", "winner": "Ryan Asbury" }
+          },
+          "bottomRegion": {
+            "name": "Nice Guys Finish First (and Warren & Cliff)",
+            "r16": [
+              { "p1": "Cory Lesley",               "p2": "Sam Snider",    "winner": "Sam Snider"  },
+              { "p1": "Nick Phillips (for Whitted)", "p2": "Cliff McEvoy", "winner": "Cliff McEvoy" }
+            ],
+            "qf": { "p1": "Sam Snider", "p2": "Cliff McEvoy", "winner": "Sam Snider" }
+          },
+          "sf": { "p1": "Ryan Asbury", "p2": "Sam Snider", "winner": "Sam Snider" }
+        },
+        "right": {
+          "topRegion": {
+            "name": "Bangkok Division",
+            "r16": [
+              { "p1": "Alex Moore",      "p2": "Jared Meyer",    "winner": "Alex Moore"    },
+              { "p1": "Kyle Kalinosky",  "p2": "Tom Ziegler",    "winner": "Tom Ziegler"   }
+            ],
+            "qf": { "p1": "Alex Moore", "p2": "Tom Ziegler", "winner": "Tom Ziegler" }
+          },
+          "bottomRegion": {
+            "name": "Avril Lavigne: Why'd You Gotta Go And Make It So Complicated? Division",
+            "r16": [
+              { "p1": "Jordon Peitzmeier", "p2": "Jace Morris",    "winner": "Jordon Peitzmeier" },
+              { "p1": "Ryan Conway",       "p2": "Charlie Wilkins", "winner": "Charlie Wilkins"   }
+            ],
+            "qf": { "p1": "Jordon Peitzmeier", "p2": "Charlie Wilkins", "winner": "Charlie Wilkins" }
+          },
+          "sf": { "p1": "Tom Ziegler", "p2": "Charlie Wilkins", "winner": "Tom Ziegler" }
+        },
+        "final": { "p1": "Sam Snider", "p2": "Tom Ziegler", "winner": "Sam Snider" }
+      },
+      "playIn": {
+        "rookie": {
+          "label": "Rookie Play-In",
+          "participants": ["Jordon Peitzmeier", "Michael Sueper", "Chad Carr", "David Jefferson", "Spencer Hosch"],
+          "winner": "Jordon Peitzmeier"
+        },
+        "experienced": {
+          "label": "2–4 Year Grower Play-In",
+          "participants": ["Ryan Saunders", "Jace Morris", "Aaron Krienert", "Matthew Goedeken"],
+          "winner": "Jace Morris"
+        }
+      }
+    },
+    {
+      "year": 2025,
+      "champion": "Eric Denslage",
+      "notes": "Tom Brantley earned his spot by defeating Andrew 'Lazerwolf' Cumbee at Trivia Night. AJ Ernster won the rookie play-in. Spencer Hosch won the 2–4 year grower play-in.",
+      "sponsor": "High Noon",
+      "bracket": {
+        "left": {
+          "topRegion": {
+            "name": "Young Guns Region",
+            "r16": [
+              { "p1": "Jordon Peitzmeier",  "p2": "Malik Abdessalam",  "winner": "Jordon Peitzmeier" },
+              { "p1": "Eric Denslage",      "p2": "AJ Ernster",        "winner": "Eric Denslage"     }
+            ],
+            "qf": { "p1": "Jordon Peitzmeier", "p2": "Eric Denslage", "winner": "Eric Denslage" }
+          },
+          "bottomRegion": {
+            "name": "David & The Goliaths Region",
+            "r16": [
+              { "p1": "Sam Snider",      "p2": "Michael Shumpert", "winner": "Sam Snider"   },
+              { "p1": "Ryan Asbury",     "p2": "Scott Gausden",    "winner": "Ryan Asbury"  }
+            ],
+            "qf": { "p1": "Sam Snider", "p2": "Ryan Asbury", "winner": "Ryan Asbury" }
+          },
+          "sf": { "p1": "Eric Denslage", "p2": "Ryan Asbury", "winner": "Eric Denslage" }
+        },
+        "right": {
+          "topRegion": {
+            "name": "Duex Over Region",
+            "r16": [
+              { "p1": "Warren Whitted", "p2": "Tom Ziegler",  "winner": "Warren Whitted" },
+              { "p1": "Cory Lesley",    "p2": "Jeff Hardy",   "winner": "Jeff Hardy"     }
+            ],
+            "qf": { "p1": "Warren Whitted", "p2": "Jeff Hardy", "winner": "Jeff Hardy" }
+          },
+          "bottomRegion": {
+            "name": "Rootin' Tootin' Hoedown Region",
+            "r16": [
+              { "p1": "Nick Phillips",  "p2": "Shawn Cullinane", "winner": "Shawn Cullinane" },
+              { "p1": "Spencer Hosch",  "p2": "Tom Brantley",    "winner": "Spencer Hosch"   }
+            ],
+            "qf": { "p1": "Shawn Cullinane", "p2": "Spencer Hosch", "winner": "Shawn Cullinane" }
+          },
+          "sf": { "p1": "Jeff Hardy", "p2": "Shawn Cullinane", "winner": "Shawn Cullinane" }
+        },
+        "final": { "p1": "Eric Denslage", "p2": "Shawn Cullinane", "winner": "Eric Denslage" }
+      },
+      "playIn": {
+        "rookie": {
+          "label": "Rookie Play-In",
+          "participants": ["Clay Ostarly", "AJ Ernster", "Jeff Lutzow", "Hammer Stinson", "Andrew Galardi"],
+          "winner": "AJ Ernster"
+        },
+        "experienced": {
+          "label": "2–4 Year Grower Play-In",
+          "participants": ["Mark Dethlefs", "William Isham", "Michael Sueper", "Joe Hawk", "Spencer Hosch"],
+          "winner": "Spencer Hosch"
+        }
+      }
+    }
+  ]
+}
