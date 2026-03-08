@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Layout from '@/components/Layout';
-import { loadAllCSVData, loadYearTotals } from '@/utils/loadCSV';
+import { loadOmahaData, loadOmahaYearTotals } from 'mustache-historian/server';
 
 type Props = {
   totalRaised: number;
@@ -9,10 +9,10 @@ type Props = {
 };
 
 export async function getStaticProps() {
-  const data = loadAllCSVData();
+  const data = loadOmahaData();
   // Use year totals (which include John Doe placeholder rows) so the grand
   // total matches the official event figures, not just attributed-grower amounts.
-  const yearTotals = loadYearTotals();
+  const yearTotals = loadOmahaYearTotals();
   const totalRaised = Object.values(yearTotals).reduce((sum, t) => sum + t, 0);
   const yearsCount = new Set(data.map(r => r.year)).size;
   const participantsCount = new Set(data.map(r => `${r.firstName} ${r.lastName}`)).size;

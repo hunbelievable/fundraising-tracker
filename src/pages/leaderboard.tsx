@@ -3,9 +3,8 @@ import Link from 'next/link';
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
 import YearSelector from '@/components/YearSelector';
-import { loadAllCSVData, loadYearTotals } from '@/utils/loadCSV';
-import { formatDollars } from '@/utils/formatDollars';
-import { aggregateLifetime } from '@/utils/aggregation';
+import { loadOmahaData, loadOmahaYearTotals } from 'mustache-historian/server';
+import { aggregateLifetime, formatDollars } from 'mustache-historian';
 
 interface AggregatedRecord {
   firstName: string;
@@ -25,7 +24,7 @@ type Props = {
 
 // Pre-compute everything server-side — no raw records shipped to the client
 export async function getStaticProps() {
-  const allData = loadAllCSVData();
+  const allData = loadOmahaData();
   const years = Array.from(new Set(allData.map(r => r.year))).sort();
   // positionFinished is omitted — the component uses the array index instead,
   // saving ~20 kB of repeated JSON key overhead across 1,089 records.
@@ -38,7 +37,7 @@ export async function getStaticProps() {
   }));
   // Use official year totals (include JD placeholders) so the "total raised"
   // figure shown above the table matches the real event numbers.
-  const yearTotals = loadYearTotals();
+  const yearTotals = loadOmahaYearTotals();
   const allTimeTotal = Object.values(yearTotals).reduce((s, t) => s + t, 0);
   return { props: { lifetimeLeaderboard, years, allTimeTotal, yearTotals } };
 }

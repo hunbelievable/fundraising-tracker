@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatDollars } from '@/utils/formatDollars';
+import { formatDollars } from 'mustache-historian';
 
 interface Record {
   firstName: string;

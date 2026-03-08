@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { FundraisingRecord } from '@/utils/loadCSV';
+import type { FundraisingRecord } from 'mustache-historian';
 
 export function useFundraisingData(year?: number) {
   const url = year ? `/api/year/${year}` : `/api/aggregate`;

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
-import { loadAllCSVData } from '@/utils/loadCSV';
-import { formatDollars } from '@/utils/formatDollars';
+import { loadOmahaData } from 'mustache-historian/server';
+import { formatDollars } from 'mustache-historian';
 
 // Compact grouped structure: one entry per unique grower, rows as tuples
 // [year, positionFinished, totalDollars] — eliminates repeated JSON key names
@@ -16,7 +16,7 @@ type SearchEntry = {
 type Props = { entries: SearchEntry[] };
 
 export async function getStaticProps() {
-  const allData = loadAllCSVData();
+  const allData = loadOmahaData();
 
   const byName = new Map<string, Array<[number, number, number]>>();
   for (const r of allData) {

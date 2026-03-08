@@ -1,7 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { loadAllCSVData, applyNameCorrection } from '@/utils/loadCSV';
-import { loadAwardsCSV } from '@/utils/loadAwardsCSV';
-import { getMeleeHistoryForGrower } from '@/utils/melee';
+import { loadOmahaData, loadOmahaAwards, getOmahaMeleeHistory, applyOmahaNameCorrection } from 'mustache-historian/server';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { name } = req.query;
@@ -11,14 +9,14 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     return res.status(400).json({ error: 'name parameter required' });
   }
 
-  const allData = loadAllCSVData();
-  const allAwards = loadAwardsCSV();
+  const allData = loadOmahaData();
+  const allAwards = loadOmahaAwards();
 
   // Build awards lookup once
   const awardsMap: Record<string, Array<{ year: number; awardName: string; nickname: string | null }>> = {};
   for (const award of allAwards) {
     if (!award.firstName || !award.lastName) continue;
-    const [cf, cl] = applyNameCorrection(award.firstName, award.lastName);
+    const [cf, cl] = applyOmahaNameCorrection(award.firstName, award.lastName);
     const key = `${cf} ${cl}`;
     if (!awardsMap[key]) awardsMap[key] = [];
     awardsMap[key].push({ year: award.year, awardName: award.awardName, nickname: award.nickname ?? null });
@@ -49,7 +47,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       firstYear: yearsCompeted > 0 ? yearlyData[0].year : 0,
       lastYear: yearsCompeted > 0 ? yearlyData[yearlyData.length - 1].year : 0,
       stacheyAwards: (awardsMap[targetName] ?? []).sort((a, b) => a.year - b.year),
-      meleeHistory: getMeleeHistoryForGrower(targetName),
+      meleeHistory: getOmahaMeleeHistory(targetName),
       yearlyData,
     };
   }

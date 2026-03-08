@@ -1,5 +1,5 @@
-import { loadAwardsCSV, StacheyAwardRecord } from './loadAwardsCSV';
-import { applyNameCorrection } from './loadCSV';
+import { loadOmahaAwards, applyOmahaNameCorrection } from 'mustache-historian/server';
+import type { StacheyAwardRecord } from 'mustache-historian';
 
 export type StacheyLeaderboardEntry = {
   fullName: string;
@@ -14,7 +14,7 @@ export type StacheyLeaderboardEntry = {
 };
 
 export function buildStacheyLeaderboard(): StacheyLeaderboardEntry[] {
-  const records = loadAwardsCSV();
+  const records = loadOmahaAwards();
 
   const map = new Map<string, StacheyLeaderboardEntry>();
 
@@ -25,7 +25,7 @@ export function buildStacheyLeaderboard(): StacheyLeaderboardEntry[] {
     }
 
     const fullName = `${record.firstName} ${record.lastName}`;
-    const [corrFirst, corrLast] = applyNameCorrection(record.firstName, record.lastName);
+    const [corrFirst, corrLast] = applyOmahaNameCorrection(record.firstName, record.lastName);
     const linkName = `${corrFirst} ${corrLast}`;
 
     if (!map.has(fullName)) {

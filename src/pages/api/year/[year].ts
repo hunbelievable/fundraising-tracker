@@ -1,5 +1,5 @@
-import { loadCSV } from '@/utils/loadCSV';
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { loadOmahaData } from 'mustache-historian/server';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   const { year } = req.query;
@@ -10,16 +10,11 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
   }
 
   try {
-    // Filter out John Doe placeholder rows — they carry unattributed event
-    // dollars and should never appear as leaderboard entries.
-    const data = loadCSV(year).filter(
-      r => !(r.firstName === 'John' && r.lastName === 'Doe'),
-    );
+    const yearNum = parseInt(year);
+    const data = loadOmahaData().filter(r => r.year === yearNum);
     res.status(200).json(data);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Error loading data' });
   }
-  {console.log('Full req.query:', req.query);
- }
 }

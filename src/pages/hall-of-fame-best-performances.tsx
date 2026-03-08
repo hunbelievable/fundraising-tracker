@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
-import { loadAllCSVData, FundraisingRecord } from '@/utils/loadCSV';
-import { formatDollars } from '@/utils/formatDollars';
-import { bestSingleYearPerformances } from '@/utils/aggregation';
+import { loadOmahaData } from 'mustache-historian/server';
+import { bestSingleYearPerformances, formatDollars } from 'mustache-historian';
+import type { FundraisingRecord } from 'mustache-historian';
 
 type Props = { topPerformances: FundraisingRecord[] };
 
 export async function getStaticProps() {
-  const data = loadAllCSVData();
+  const data = loadOmahaData();
   const topPerformances = bestSingleYearPerformances(data);
   return { props: { topPerformances } };
 }

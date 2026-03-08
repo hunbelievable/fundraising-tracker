@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
-import { loadAllCSVData, loadYearTotals } from '@/utils/loadCSV';
-import { formatDollars } from '@/utils/formatDollars';
+import { loadOmahaData, loadOmahaYearTotals } from 'mustache-historian/server';
+import { formatDollars } from 'mustache-historian';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -55,10 +55,10 @@ type Props = {
 // ── Data ───────────────────────────────────────────────────────────────────────
 
 export async function getStaticProps() {
-  const data = loadAllCSVData();
+  const data = loadOmahaData();
   // Official per-year totals include JD placeholder rows so dollar figures
   // match the real event numbers rather than just the attributed-grower amounts.
-  const officialYearTotals = loadYearTotals();
+  const officialYearTotals = loadOmahaYearTotals();
 
   // Build per-grower year-total map
   type GrowerInfo = { firstName: string; lastName: string; years: Set<number>; yearTotals: Record<number, number> };

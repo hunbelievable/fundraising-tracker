@@ -1,5 +1,5 @@
 import React from 'react';
-import { formatDollars } from '@/utils/formatDollars';
+import { formatDollars } from 'mustache-historian';
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,

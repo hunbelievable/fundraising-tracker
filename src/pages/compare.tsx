@@ -2,9 +2,9 @@ import { useState, useEffect, useRef } from 'react';
 import Select from 'react-select';
 import Layout from '@/components/Layout';
 import CompareChart from '@/components/CompareChart';
-import { loadAllCSVData } from '@/utils/loadCSV';
-import { formatDollars } from '@/utils/formatDollars';
-import { MeleeAppearance, MeleeRound } from '@/utils/melee';
+import { loadOmahaData } from 'mustache-historian/server';
+import { formatDollars } from 'mustache-historian';
+import type { MeleeAppearance, MeleeRound } from 'mustache-historian';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -233,7 +233,7 @@ const selectStyles = {
 // ── getStaticProps — only names + years, no per-grower stats ──────────────────
 
 export async function getStaticProps() {
-  const allData = loadAllCSVData();
+  const allData = loadOmahaData();
   const allNames = Array.from(new Set(allData.map(r => `${r.firstName} ${r.lastName}`))).sort();
   const allYears = Array.from(new Set(allData.map(r => r.year))).sort();
   return { props: { allNames, allYears } };

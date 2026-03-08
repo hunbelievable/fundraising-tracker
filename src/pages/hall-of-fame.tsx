@@ -1,14 +1,14 @@
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
-import { loadAllCSVData } from '@/utils/loadCSV';
-import { formatDollars } from '@/utils/formatDollars';
-import { aggregateLifetime, AggregatedLifetime } from '@/utils/aggregation';
+import { loadOmahaData } from 'mustache-historian/server';
+import { aggregateLifetime, formatDollars } from 'mustache-historian';
+import type { AggregatedLifetime } from 'mustache-historian';
 
 type Props = { lifetimeLeaders: AggregatedLifetime[] };
 
 export async function getStaticProps() {
-  const data = loadAllCSVData();
+  const data = loadOmahaData();
   const lifetimeLeaders = aggregateLifetime(data).slice(0, 10);
   return { props: { lifetimeLeaders } };
 }

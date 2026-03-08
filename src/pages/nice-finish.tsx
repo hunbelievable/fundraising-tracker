@@ -1,15 +1,15 @@
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
-import { loadAllCSVData, FundraisingRecord } from '@/utils/loadCSV';
-import { formatDollars } from '@/utils/formatDollars';
-import { getNiceFinishers } from '@/utils/aggregation';
+import { loadOmahaData } from 'mustache-historian/server';
+import { getNiceFinishers, formatDollars } from 'mustache-historian';
+import type { FundraisingRecord } from 'mustache-historian';
 
 type NiceFinisher = { year: number; finisher: FundraisingRecord | null };
 type Props = { niceFinishers: NiceFinisher[] };
 
 export async function getStaticProps() {
-  const data = loadAllCSVData();
+  const data = loadOmahaData();
   const niceFinishers = getNiceFinishers(data);
   return { props: { niceFinishers } };
 }

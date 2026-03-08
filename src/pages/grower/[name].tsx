@@ -3,10 +3,9 @@ import Link from 'next/link';
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
 import YearlyTotalsChart from '@/components/YearlyTotalsChart';
-import { loadAllCSVData, applyNameCorrection, FundraisingRecord } from '@/utils/loadCSV';
-import { formatDollars } from '@/utils/formatDollars';
-import { loadAwardsCSV, StacheyAwardRecord } from '@/utils/loadAwardsCSV';
-import { getMeleeHistoryForGrower, MeleeAppearance, MeleeRound } from '@/utils/melee';
+import { loadOmahaData, loadOmahaAwards, getOmahaMeleeHistory, applyOmahaNameCorrection } from 'mustache-historian/server';
+import { formatDollars } from 'mustache-historian';
+import type { FundraisingRecord, StacheyAwardRecord, MeleeAppearance, MeleeRound } from 'mustache-historian';
 
 type Props = {
   name: string;
@@ -24,7 +23,7 @@ type Props = {
 const MILESTONES = [5_000, 10_000, 25_000, 50_000, 75_000, 100_000, 150_000, 200_000, 250_000, 300_000];
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = loadAllCSVData();
+  const data = loadOmahaData();
   const names = Array.from(new Set(data.map(r => `${r.firstName} ${r.lastName}`)));
   const paths = names.map(name => ({ params: { name } }));
   return { paths, fallback: false };
@@ -32,7 +31,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const name = params!.name as string;
-  const data = loadAllCSVData();
+  const data = loadOmahaData();
   const records = data
     .filter(r => `${r.firstName} ${r.lastName}` === name)
     .sort((a, b) => a.year - b.year);
@@ -42,17 +41,17 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const bestRank = records.length > 0 ? Math.min(...records.map(r => r.positionFinished)) : 0;
 
   // Stachey awards — apply name correction so award CSV names resolve to canonical names
-  const allAwards = loadAwardsCSV();
+  const allAwards = loadOmahaAwards();
   const stacheyAwards = allAwards
     .filter(a => {
       if (!a.firstName || !a.lastName) return false;
-      const [corrFirst, corrLast] = applyNameCorrection(a.firstName, a.lastName);
+      const [corrFirst, corrLast] = applyOmahaNameCorrection(a.firstName, a.lastName);
       return `${corrFirst} ${corrLast}` === name;
     })
     .sort((a, b) => a.year - b.year);
 
   // Melee history
-  const meleeHistory = getMeleeHistoryForGrower(name);
+  const meleeHistory = getOmahaMeleeHistory(name);
 
   // Selleck Years: years where $1,000+ was raised (the group's highest recognition)
   const selleckYears = records.filter(r => r.totalDollars >= 1000).length;

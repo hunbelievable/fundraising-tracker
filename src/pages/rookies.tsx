@@ -1,10 +1,9 @@
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
-import { loadAllCSVData, applyNameCorrection } from '@/utils/loadCSV';
-import { formatDollars } from '@/utils/formatDollars';
-import { getRookiesByYear, RookieYearEntry } from '@/utils/aggregation';
-import { loadAwardsCSV, StacheyAwardRecord } from '@/utils/loadAwardsCSV';
+import { loadOmahaData, loadOmahaAwards, applyOmahaNameCorrection } from 'mustache-historian/server';
+import { getRookiesByYear, formatDollars } from 'mustache-historian';
+import type { RookieYearEntry, StacheyAwardRecord } from 'mustache-historian';
 
 type RotyWinner = StacheyAwardRecord & {
   linkName: string | null; // corrected name for grower profile URL
@@ -16,16 +15,16 @@ type Props = {
 };
 
 export async function getStaticProps() {
-  const data = loadAllCSVData();
+  const data = loadOmahaData();
   const rookiesByYear = getRookiesByYear(data);
 
-  const awards = loadAwardsCSV();
+  const awards = loadOmahaAwards();
   const rotyWinners: RotyWinner[] = awards
     .filter(a => a.awardName === 'Rookie of the Year')
     .sort((a, b) => b.year - a.year)
     .map(a => {
       if (!a.firstName || !a.lastName) return { ...a, linkName: null };
-      const [fn, ln] = applyNameCorrection(a.firstName, a.lastName);
+      const [fn, ln] = applyOmahaNameCorrection(a.firstName, a.lastName);
       return { ...a, linkName: `${fn} ${ln}` };
     });
 

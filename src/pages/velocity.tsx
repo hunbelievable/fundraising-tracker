@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Layout from '@/components/Layout';
-import { loadAllCSVData } from '@/utils/loadCSV';
-import { formatDollars } from '@/utils/formatDollars';
+import { loadOmahaData } from 'mustache-historian/server';
+import { formatDollars } from 'mustache-historian';
 
 // ── Types ──────────────────────────────────────────────────────────────────────
 
@@ -55,7 +55,7 @@ function fmtChange(n: number): string {
 // ── Data ───────────────────────────────────────────────────────────────────────
 
 export async function getStaticProps() {
-  const data = loadAllCSVData();
+  const data = loadOmahaData();
 
   // Build: name -> { firstName, lastName, yearTotals: { year: total } }
   type GrowerInfo = { firstName: string; lastName: string; yearTotals: Record<number, number> };

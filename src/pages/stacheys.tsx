@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
-import { loadAwardsCSV, StacheyAwardRecord } from '../utils/loadAwardsCSV';
-import { loadAllCSVData, applyNameCorrection } from '../utils/loadCSV';
-import { formatDollars } from '../utils/formatDollars';
+import { loadOmahaAwards, loadOmahaData, applyOmahaNameCorrection } from 'mustache-historian/server';
+import { formatDollars } from 'mustache-historian';
+import type { StacheyAwardRecord } from 'mustache-historian';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -34,8 +34,8 @@ const AWARD_ORDER = [
 // ── Data ──────────────────────────────────────────────────────────────────────
 
 export async function getStaticProps() {
-  const awards = loadAwardsCSV();
-  const allGrowerData = loadAllCSVData();
+  const awards = loadOmahaAwards();
+  const allGrowerData = loadOmahaData();
 
   // Set of canonical grower names for link gating
   const growerNames = new Set(allGrowerData.map(r => `${r.firstName} ${r.lastName}`));
@@ -55,7 +55,7 @@ export async function getStaticProps() {
     let yearTotal: number | null = null;
 
     if (record.firstName && record.lastName) {
-      const [corrFirst, corrLast] = applyNameCorrection(record.firstName, record.lastName);
+      const [corrFirst, corrLast] = applyOmahaNameCorrection(record.firstName, record.lastName);
       const corrected = `${corrFirst} ${corrLast}`;
       if (growerNames.has(corrected)) {
         linkName = corrected;

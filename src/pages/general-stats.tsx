@@ -1,14 +1,15 @@
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
-import { loadAllCSVData } from '@/utils/loadCSV';
-import { getThresholdGrowthByYear, ThresholdYearEntry } from '@/utils/aggregation';
+import { loadOmahaData } from 'mustache-historian/server';
+import { getThresholdGrowthByYear } from 'mustache-historian';
+import type { ThresholdYearEntry } from 'mustache-historian';
 
 type Props = {
   stats: ThresholdYearEntry[];
 };
 
 export async function getStaticProps() {
-  const data = loadAllCSVData();
+  const data = loadOmahaData();
   const stats = getThresholdGrowthByYear(data);
   return { props: { stats } };
 }
