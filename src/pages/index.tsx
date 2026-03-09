@@ -29,6 +29,7 @@ const cards = [
   { href: '/stacheys',                       label: 'Stachey Awards'           },
   { href: '/stachey-leaderboard',            label: 'Stachey Leaderboard'      },
   { href: '/rookies',                        label: 'Rookie Records'           },
+  { href: '/five-year-class',               label: '5Y Classes'               },
   { href: '/general-stats',                  label: 'Growth by the Numbers'    },
   { href: '/melee',                          label: 'Mustache Melee Bracket'   },
   { href: '/velocity',                       label: 'Velocity Trends'          },
