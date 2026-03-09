@@ -18,6 +18,7 @@ type Props = {
   selleckYears: number;
   nextMilestone: number | null;
   prevMilestone: number;
+  rookieYear: number | null;
 };
 
 const MILESTONES = [5_000, 10_000, 25_000, 50_000, 75_000, 100_000, 150_000, 200_000, 250_000, 300_000];
@@ -62,7 +63,9 @@ export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
     ? (MILESTONES[MILESTONES.indexOf(nextMilestone) - 1] ?? 0)
     : MILESTONES[MILESTONES.length - 1];
 
-  return { props: { name, records, totalDollars, top10Finishes, bestRank, stacheyAwards, meleeHistory, selleckYears, nextMilestone, prevMilestone } };
+  const rookieYear = records.length > 0 ? records[0].year : null;
+
+  return { props: { name, records, totalDollars, top10Finishes, bestRank, stacheyAwards, meleeHistory, selleckYears, nextMilestone, prevMilestone, rookieYear } };
 };
 
 // ── Trophy Case helpers ──────────────────────────────────────────────────────
@@ -149,7 +152,7 @@ function StacheyBadge({ award }: { award: StacheyAwardRecord }) {
 
 export default function GrowerProfilePage({
   name, records, totalDollars, top10Finishes, bestRank, stacheyAwards, meleeHistory, selleckYears,
-  nextMilestone, prevMilestone,
+  nextMilestone, prevMilestone, rookieYear,
 }: Props) {
   const chartData = records.map(r => ({ year: r.year, total: r.totalDollars }));
   const initials = name.split(' ').map((w: string) => w[0] ?? '').join('').slice(0, 2).toUpperCase();
@@ -188,8 +191,29 @@ export default function GrowerProfilePage({
           <div className="font-bebas" style={{ fontSize: '3rem', color: 'var(--white)', lineHeight: 1, marginBottom: '0.2rem' }}>
             {name}
           </div>
-          <div className="eyebrow">
-            {records.length > 0 ? `Active ${records[0].year}–${records[records.length - 1].year}` : ''}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <div className="eyebrow">
+              {records.length > 0 ? `Active ${records[0].year}–${records[records.length - 1].year}` : ''}
+            </div>
+            {rookieYear && (
+              <Link
+                href={`/five-year-class#class-${rookieYear}`}
+                style={{
+                  fontFamily: "'DM Mono', monospace",
+                  fontSize: '0.62rem',
+                  color: 'var(--gold)',
+                  background: 'rgba(193,154,73,0.1)',
+                  border: '1px solid rgba(193,154,73,0.3)',
+                  borderRadius: '4px',
+                  padding: '0.15rem 0.45rem',
+                  textDecoration: 'none',
+                  letterSpacing: '0.05em',
+                  whiteSpace: 'nowrap',
+                }}
+              >
+                Class of {rookieYear}
+              </Link>
+            )}
           </div>
         </div>
       </div>

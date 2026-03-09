@@ -10,6 +10,7 @@ const navLinks = [
   { href: '/stacheys',                       label: 'Stacheys'          },
   { href: '/stachey-leaderboard',            label: 'Stachey LB'        },
   { href: '/rookies',                        label: 'Rookies'           },
+  { href: '/five-year-class',               label: '5Y Classes'        },
   { href: '/general-stats',                  label: 'Growth Stats'      },
   { href: '/melee',                           label: 'Melee'             },
   { href: '/velocity',                        label: 'Velocity'          },
