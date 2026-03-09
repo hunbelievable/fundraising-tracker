@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import Layout from '@/components/Layout';
 import BaseTable from '@/components/BaseTable';
-import { loadOmahaAwards, loadOmahaData, applyOmahaNameCorrection } from 'mustache-historian/server';
+import { loadOmahaAwards, loadOmahaCompanyAwards, loadOmahaData, applyOmahaNameCorrection } from 'mustache-historian/server';
 import { formatDollars } from 'mustache-historian';
-import type { StacheyAwardRecord } from 'mustache-historian';
+import type { StacheyAwardRecord, CompanyAwardRecord } from 'mustache-historian';
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 
@@ -69,14 +69,16 @@ export async function getStaticProps() {
 
   Object.values(grouped).forEach(group => group.sort((a, b) => b.year - a.year));
 
-  return { props: { grouped } };
+  const companyAwards = loadOmahaCompanyAwards().sort((a, b) => b.year - a.year);
+
+  return { props: { grouped, companyAwards } };
 }
 
 // ── Page ──────────────────────────────────────────────────────────────────────
 
-type Props = { grouped: GroupedAwards };
+type Props = { grouped: GroupedAwards; companyAwards: CompanyAwardRecord[] };
 
-export default function StacheyAwardsPage({ grouped }: Props) {
+export default function StacheyAwardsPage({ grouped, companyAwards }: Props) {
   const orderedKeys = [
     ...AWARD_ORDER.filter(k => grouped[k]),
     ...Object.keys(grouped).filter(k => !AWARD_ORDER.includes(k)),
@@ -93,6 +95,28 @@ export default function StacheyAwardsPage({ grouped }: Props) {
       <div className="eyebrow" style={{ marginBottom: '2rem' }}>
         Annual awards for the stache community
       </div>
+
+      {companyAwards.length > 0 && (
+        <div style={{ marginBottom: '2.5rem' }}>
+          <div className="sec">Sexiest Company in America</div>
+          <BaseTable>
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Company</th>
+              </tr>
+            </thead>
+            <tbody>
+              {companyAwards.map((record, idx) => (
+                <tr key={idx}>
+                  <td style={{ color: 'var(--dim)' }}>{record.year}</td>
+                  <td>{record.company}</td>
+                </tr>
+              ))}
+            </tbody>
+          </BaseTable>
+        </div>
+      )}
 
       {orderedKeys.map(awardName => {
         const records = grouped[awardName];
