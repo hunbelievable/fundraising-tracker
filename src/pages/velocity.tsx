@@ -455,6 +455,7 @@ export default function VelocityPage({ years, allTimeAccel, allTimeDecel }: Prop
 
           {/* Two-column layout */}
           <div
+            className="side-by-side"
             style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',

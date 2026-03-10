@@ -321,7 +321,7 @@ export default function ClubHealthPage({
       </div>
 
       {/* ── Active Streaks + Milestone Watch (side by side) ──────────────────── */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'start' }}>
+      <div className="side-by-side" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', alignItems: 'start' }}>
 
         {/* Active Streaks */}
         <div>

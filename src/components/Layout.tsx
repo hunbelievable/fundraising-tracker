@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 
 const navLinks = [
   { href: '/leaderboard',                    label: 'Leaderboard'       },
@@ -18,9 +20,96 @@ const navLinks = [
 ];
 
 export default function Layout({ children, wide }: { children: React.ReactNode; wide?: boolean }) {
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const router = useRouter();
+
+  // Close drawer on navigation
+  useEffect(() => { setDrawerOpen(false); }, [router.pathname]);
+
+  // Close on Escape
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setDrawerOpen(false); };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  // Lock body scroll when drawer is open
+  useEffect(() => {
+    document.body.style.overflow = drawerOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [drawerOpen]);
+
   return (
     <div style={{ minHeight: '100vh' }}>
-      <header style={{ borderBottom: '1px solid rgba(255,255,255,.07)', padding: '1.25rem 1.75rem' }}>
+
+      {/* Backdrop overlay */}
+      {drawerOpen && (
+        <div
+          onClick={() => setDrawerOpen(false)}
+          style={{
+            position: 'fixed', inset: 0,
+            background: 'rgba(0,0,0,0.65)',
+            backdropFilter: 'blur(3px)',
+            WebkitBackdropFilter: 'blur(3px)',
+            zIndex: 40,
+          }}
+        />
+      )}
+
+      {/* Slide-out drawer (mobile) */}
+      <div style={{
+        position: 'fixed', top: 0, left: 0, bottom: 0,
+        width: '280px',
+        background: 'var(--panel)',
+        borderRight: '1px solid rgba(212,168,32,.2)',
+        zIndex: 50,
+        transform: drawerOpen ? 'translateX(0)' : 'translateX(-100%)',
+        transition: 'transform 0.25s cubic-bezier(0.4,0,0.2,1)',
+        overflowY: 'auto',
+        padding: '1.25rem 1rem 2rem',
+      }}>
+        <div style={{
+          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+          marginBottom: '1.25rem', paddingBottom: '1rem',
+          borderBottom: '1px solid var(--border)',
+        }}>
+          <Link href="/" style={{ textDecoration: 'none' }}>
+            <div className="font-bebas" style={{ fontSize: '1.5rem', color: 'var(--gold)', lineHeight: 1 }}>
+              Stache Trophy Room
+            </div>
+          </Link>
+          <button
+            onClick={() => setDrawerOpen(false)}
+            aria-label="Close menu"
+            style={{
+              background: 'none', border: 'none',
+              color: 'var(--dim)', fontSize: '1.6rem',
+              cursor: 'pointer', padding: '0 0.25rem', lineHeight: 1,
+            }}
+          >×</button>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
+          {navLinks.map(link => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="nav-tab-link"
+              style={{ display: 'block', padding: '0.7rem 0.85rem', width: '100%', boxSizing: 'border-box' }}
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Header */}
+      <header style={{
+        borderBottom: '1px solid rgba(255,255,255,.07)',
+        padding: '1.25rem 1.75rem',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}>
         <Link href="/" style={{ textDecoration: 'none' }}>
           <div className="font-bebas" style={{ fontSize: '2rem', color: 'var(--gold)', lineHeight: 1 }}>
             Stache Trophy Room
@@ -29,9 +118,43 @@ export default function Layout({ children, wide }: { children: React.ReactNode; 
             Fundraising · Hall of Fame · Records
           </div>
         </Link>
+
+        {/* Hamburger button — shown on mobile only via CSS */}
+        <button
+          className="nav-hamburger"
+          onClick={() => setDrawerOpen(true)}
+          aria-label="Open navigation"
+          style={{
+            display: 'none',
+            background: 'none',
+            border: '1px solid var(--border)',
+            borderRadius: '0.5rem',
+            color: 'var(--dim)',
+            cursor: 'pointer',
+            padding: '0.5rem 0.6rem',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          <svg width="18" height="14" viewBox="0 0 18 14" fill="currentColor">
+            <rect y="0" width="18" height="2" rx="1" />
+            <rect y="6" width="18" height="2" rx="1" />
+            <rect y="12" width="18" height="2" rx="1" />
+          </svg>
+        </button>
       </header>
 
-      <nav style={{ borderBottom: '1px solid rgba(255,255,255,.07)', padding: '0.5rem 1.75rem', display: 'flex', flexWrap: 'wrap' as const, gap: '0.25rem' }}>
+      {/* Desktop nav — hidden on mobile via CSS */}
+      <nav
+        className="nav-desktop"
+        style={{
+          borderBottom: '1px solid rgba(255,255,255,.07)',
+          padding: '0.5rem 1.75rem',
+          display: 'flex',
+          flexWrap: 'wrap' as const,
+          gap: '0.25rem',
+        }}
+      >
         {navLinks.map(link => (
           <Link key={link.href} href={link.href} className="nav-tab-link">
             {link.label}
@@ -39,10 +162,13 @@ export default function Layout({ children, wide }: { children: React.ReactNode; 
         ))}
       </nav>
 
-      <main style={wide
-        ? { padding: '2.5rem 0' }
-        : { padding: '2.5rem 1.75rem', maxWidth: '1080px', margin: '0 auto' }
-      }>
+      <main
+        className={wide ? undefined : 'main-padded'}
+        style={wide
+          ? { padding: '2.5rem 0' }
+          : { maxWidth: '1080px', margin: '0 auto', paddingTop: '2.5rem', paddingBottom: '2.5rem' }
+        }
+      >
         {children}
       </main>
     </div>

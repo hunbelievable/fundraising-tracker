@@ -43,7 +43,7 @@ export default function RookiesPage({ rookiesByYear, rotyWinners }: Props) {
         First-year grower highlights and Rookie of the Year award history
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', alignItems: 'start' }}>
+      <div className="side-by-side" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', alignItems: 'start' }}>
 
         {/* Top Rookie Fundraiser by Year */}
         <div>

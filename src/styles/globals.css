@@ -221,3 +221,53 @@ li { margin-bottom: 0.5rem; }
   color: var(--gold);
   text-decoration: none !important;
 }
+
+/* ── Mobile (≤640px) ────────────────────────────────────── */
+@media (max-width: 640px) {
+  /* Nav: collapse desktop bar, reveal hamburger */
+  .nav-desktop  { display: none !important; }
+  .nav-hamburger { display: flex !important; }
+
+  /* Header: tighter padding */
+  header { padding: 0.875rem 1.1rem !important; }
+
+  /* Main content: tighter horizontal padding */
+  .main-padded {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Tables: horizontal scroll so columns never clip */
+  .tbl-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 0.5rem;
+  }
+  .tbl-wrap th,
+  .tbl-wrap td {
+    padding: 0.55rem 0.65rem;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+  /* Allow name-style columns to wrap rather than push the table wide */
+  .tbl-wrap td.wrap { white-space: normal; min-width: 90px; }
+
+  /* Stat cards: 2-up grid instead of single-column stack */
+  .stats-grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  /* Utility: scale down large Bebas page titles */
+  .page-title {
+    font-size: clamp(1.8rem, 9vw, 3rem) !important;
+    line-height: 1.05 !important;
+  }
+
+  /* Side-by-side sections: stack vertically on mobile */
+  .side-by-side {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}

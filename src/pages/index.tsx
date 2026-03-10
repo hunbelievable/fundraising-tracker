@@ -48,7 +48,7 @@ export default function HomePage({ totalRaised, yearsCount, participantsCount }:
           Every dollar raised · Every year celebrated · Est. 2009
         </div>
 
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
+        <div className="stats-grid" style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1rem' }}>
           <div className="stat-card" style={{ minWidth: '160px' }}>
             <div className="stat-value">
               ${Math.round(totalRaised / 1_000_000 * 10) / 10}M
