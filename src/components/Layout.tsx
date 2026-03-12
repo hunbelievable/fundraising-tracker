@@ -84,7 +84,7 @@ export default function Layout({ children, wide }: { children: React.ReactNode; 
             style={{
               background: 'none', border: 'none',
               color: 'var(--dim)', fontSize: '1.6rem',
-              cursor: 'pointer', padding: '0 0.25rem', lineHeight: 1,
+              cursor: 'pointer', padding: '0.5rem 0.75rem', lineHeight: 1,
             }}
           >×</button>
         </div>
@@ -93,7 +93,7 @@ export default function Layout({ children, wide }: { children: React.ReactNode; 
             <Link
               key={link.href}
               href={link.href}
-              className="nav-tab-link"
+              className={`nav-tab-link${router.pathname === link.href ? ' nav-tab-active' : ''}`}
               style={{ display: 'block', padding: '0.7rem 0.85rem', width: '100%', boxSizing: 'border-box' }}
             >
               {link.label}
@@ -156,7 +156,7 @@ export default function Layout({ children, wide }: { children: React.ReactNode; 
         }}
       >
         {navLinks.map(link => (
-          <Link key={link.href} href={link.href} className="nav-tab-link">
+          <Link key={link.href} href={link.href} className={`nav-tab-link${router.pathname === link.href ? ' nav-tab-active' : ''}`}>
             {link.label}
           </Link>
         ))}

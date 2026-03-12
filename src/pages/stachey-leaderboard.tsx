@@ -45,7 +45,7 @@ export default function StacheyLeaderboardPage({ leaderboard }: Props) {
                 </Link>
               </td>
               <td className="center">{entry.totalAwards}</td>
-              <td style={{ color: 'var(--dim)', fontSize: '0.75rem' }}>
+              <td className="wrap" style={{ color: 'var(--dim)', fontSize: '0.75rem' }}>
                 {entry.awards
                   .sort((a, b) => b.year - a.year)
                   .map(a => `${a.awardName} (${a.year})`)

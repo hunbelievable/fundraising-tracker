@@ -180,7 +180,7 @@ export default function StacheyAwardsPage({ grouped, companyAwards }: Props) {
                         record.linkName ? (
                           <Link
                             href={`/grower/${encodeURIComponent(record.linkName)}`}
-                            className="link"
+                            className="gold-link"
                           >
                             {record.firstName} {record.lastName}
                           </Link>

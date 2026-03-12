@@ -274,8 +274,11 @@ export default function ComparePage({ allNames, allYears }: Props) {
       });
   }, [selected, statsCache]);
 
+  const MAX_GROWERS = 4;
+
   const handleSelect = (selectedOptions: readonly OptionType[] | null) => {
-    setSelected(selectedOptions ? selectedOptions.map(o => o.value) : []);
+    const values = selectedOptions ? selectedOptions.map(o => o.value) : [];
+    setSelected(values.slice(0, MAX_GROWERS));
   };
 
   const n = selected.length;
@@ -386,6 +389,7 @@ export default function ComparePage({ allNames, allYears }: Props) {
                   <div style={{ minWidth: 0 }}>
                     <div
                       className="font-bebas"
+                      title={name}
                       style={{
                         fontSize: '1.5rem', color: 'var(--white)', lineHeight: 1,
                         marginBottom: '0.2rem', overflow: 'hidden',

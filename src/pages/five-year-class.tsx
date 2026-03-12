@@ -53,7 +53,7 @@ function MemberChip({ m }: { m: FiveYearClassEntry['members'][number] }) {
 const CHIP_BASE: React.CSSProperties = {
   fontFamily: "'DM Mono', monospace",
   fontSize: '0.65rem',
-  padding: '0.25rem 0.65rem',
+  padding: '0.5rem 0.65rem',
   borderRadius: '4px',
   cursor: 'pointer',
   letterSpacing: '0.06em',
@@ -150,7 +150,7 @@ export default function FiveYearClassPage({ classes }: Props) {
                 style={{
                   ...CHIP_BASE,
                   fontSize: '0.6rem',
-                  padding: '0.2rem 0.55rem',
+                  padding: '0.4rem 0.55rem',
                   ...(isOn ? { border: '1px solid rgba(255,255,255,0.3)', background: 'rgba(255,255,255,0.08)', color: 'var(--white)' } : {}),
                 }}
               >

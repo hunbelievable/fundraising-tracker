@@ -8,6 +8,7 @@
   --gold:   #d4a820;
   --white:  #f0ece0;
   --dim:    #6b5a3a;
+  --muted:  #4a3f2a;
 }
 
 /* ── Base ───────────────────────────────────────────────── */
@@ -169,6 +170,10 @@ li { margin-bottom: 0.5rem; }
 .nav-tab-link:hover {
   color: var(--gold) !important;
   background: rgba(212,168,32,.08);
+}
+.nav-tab-active {
+  color: var(--gold) !important;
+  background: rgba(212,168,32,.12) !important;
 }
 
 /* ── Nav cards (home page) ──────────────────────────────── */
