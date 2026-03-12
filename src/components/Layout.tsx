@@ -18,15 +18,15 @@ const navGroups = [
     label: 'Awards',
     links: [
       { href: '/stacheys',            label: 'Stacheys'   },
-      { href: '/stachey-leaderboard', label: 'Stachey LB' },
+      { href: '/stachey-leaderboard', label: 'Award Leaders' },
     ],
   },
   {
     label: 'Club',
     links: [
       { href: '/rookies',       label: 'Rookies'      },
-      { href: '/five-year-class', label: '5Y Classes' },
-      { href: '/general-stats', label: 'Growth Stats' },
+      { href: '/five-year-class', label: '5-Year Classes' },
+      { href: '/general-stats', label: 'Growth by Numbers' },
       { href: '/velocity',      label: 'Velocity'     },
       { href: '/club-health',   label: 'Club Health'  },
     ],

@@ -253,7 +253,7 @@
     },
     {
       "year": 2025,
-      "champion": "Eric Denslage",
+      "champion": "Eric Dinslage",
       "notes": "Tom Brantley earned his spot by defeating Andrew 'Lazerwolf' Cumbee at Trivia Night. AJ Ernster won the rookie play-in. Spencer Hosch won the 2–4 year grower play-in.",
       "sponsor": "High Noon",
       "bracket": {
@@ -262,9 +262,9 @@
             "name": "Young Guns Region",
             "r16": [
               { "p1": "Jordon Peitzmeier",  "p2": "Malik Abdessalam",  "winner": "Jordon Peitzmeier" },
-              { "p1": "Eric Denslage",      "p2": "AJ Ernster",        "winner": "Eric Denslage"     }
+              { "p1": "Eric Dinslage",      "p2": "AJ Ernster",        "winner": "Eric Dinslage"     }
             ],
-            "qf": { "p1": "Jordon Peitzmeier", "p2": "Eric Denslage", "winner": "Eric Denslage" }
+            "qf": { "p1": "Jordon Peitzmeier", "p2": "Eric Dinslage", "winner": "Eric Dinslage" }
           },
           "bottomRegion": {
             "name": "David & The Goliaths Region",
@@ -274,7 +274,7 @@
             ],
             "qf": { "p1": "Sam Snider", "p2": "Ryan Asbury", "winner": "Ryan Asbury" }
           },
-          "sf": { "p1": "Eric Denslage", "p2": "Ryan Asbury", "winner": "Eric Denslage" }
+          "sf": { "p1": "Eric Dinslage", "p2": "Ryan Asbury", "winner": "Eric Dinslage" }
         },
         "right": {
           "topRegion": {
@@ -295,7 +295,7 @@
           },
           "sf": { "p1": "Jeff Hardy", "p2": "Shawn Cullinane", "winner": "Shawn Cullinane" }
         },
-        "final": { "p1": "Eric Denslage", "p2": "Shawn Cullinane", "winner": "Eric Denslage" }
+        "final": { "p1": "Eric Dinslage", "p2": "Shawn Cullinane", "winner": "Eric Dinslage" }
       },
       "playIn": {
         "rookie": {

@@ -204,10 +204,15 @@ function YearBracket({ y }: { y: YearData }) {
         )}
       </div>
 
+      {/* Mobile scroll hint */}
+      <div className="bracket-scroll-hint">← scroll to see full bracket →</div>
+
       {/* Bracket */}
       <div
         style={{
           paddingBottom: '1rem',
+          overflowX: 'auto',
+          WebkitOverflowScrolling: 'touch' as React.CSSProperties['WebkitOverflowScrolling'],
         }}
       >
         <div
@@ -216,6 +221,7 @@ function YearBracket({ y }: { y: YearData }) {
             alignItems: 'stretch',
             gap: '10px',
             padding: '0 1.75rem',
+            minWidth: '720px',
           }}
         >
           {/* ── LEFT SIDE ── */}
