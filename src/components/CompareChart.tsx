@@ -29,7 +29,7 @@ const GRID = 'rgba(255,255,255,.05)';
 export default function CompareChart({ data, allYears }: CompareChartProps) {
   const datasets = data.map((entry, index) => ({
     label: entry.name,
-    data: allYears.map(year => entry.yearlyMap[year] ?? 0),
+    data: allYears.map(year => entry.yearlyMap[year] ?? null),
     borderColor: PALETTE[index % PALETTE.length],
     backgroundColor: PALETTE[index % PALETTE.length] + '22',
     pointBackgroundColor: PALETTE[index % PALETTE.length],
@@ -37,6 +37,7 @@ export default function CompareChart({ data, allYears }: CompareChartProps) {
     tension: 0.2,
     borderWidth: 2,
     pointRadius: 4,
+    spanGaps: false,
   }));
 
   const chartData = { labels: allYears, datasets };
