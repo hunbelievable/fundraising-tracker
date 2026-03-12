@@ -2,22 +2,45 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 
-const navLinks = [
-  { href: '/leaderboard',                    label: 'Leaderboard'       },
-  { href: '/hall-of-fame',                   label: 'Hall of Fame'      },
-  { href: '/hall-of-fame-best-performances', label: 'Best Performances' },
-  { href: '/compare',                        label: 'Compare'           },
-  { href: '/search',                         label: 'Search'            },
-  { href: '/nice-finish',                    label: 'Nice Finish'       },
-  { href: '/stacheys',                       label: 'Stacheys'          },
-  { href: '/stachey-leaderboard',            label: 'Stachey LB'        },
-  { href: '/rookies',                        label: 'Rookies'           },
-  { href: '/five-year-class',               label: '5Y Classes'        },
-  { href: '/general-stats',                  label: 'Growth Stats'      },
-  { href: '/melee',                           label: 'Melee'             },
-  { href: '/velocity',                        label: 'Velocity'          },
-  { href: '/club-health',                     label: 'Club Health'       },
+const navGroups = [
+  {
+    label: 'Individual',
+    links: [
+      { href: '/leaderboard',                    label: 'Leaderboard'       },
+      { href: '/hall-of-fame',                   label: 'Hall of Fame'      },
+      { href: '/hall-of-fame-best-performances', label: 'Best Performances' },
+      { href: '/compare',                        label: 'Compare'           },
+      { href: '/search',                         label: 'Search'            },
+      { href: '/nice-finish',                    label: 'Nice Finish'       },
+    ],
+  },
+  {
+    label: 'Awards',
+    links: [
+      { href: '/stacheys',            label: 'Stacheys'   },
+      { href: '/stachey-leaderboard', label: 'Stachey LB' },
+    ],
+  },
+  {
+    label: 'Club',
+    links: [
+      { href: '/rookies',       label: 'Rookies'      },
+      { href: '/five-year-class', label: '5Y Classes' },
+      { href: '/general-stats', label: 'Growth Stats' },
+      { href: '/velocity',      label: 'Velocity'     },
+      { href: '/club-health',   label: 'Club Health'  },
+    ],
+  },
+  {
+    label: 'Competition',
+    links: [
+      { href: '/melee', label: 'Melee' },
+    ],
+  },
 ];
+
+// Flat list kept for any logic that needs it
+const navLinks = navGroups.flatMap(g => g.links);
 
 export default function Layout({ children, wide }: { children: React.ReactNode; wide?: boolean }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -88,16 +111,37 @@ export default function Layout({ children, wide }: { children: React.ReactNode; 
             }}
           >×</button>
         </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.1rem' }}>
-          {navLinks.map(link => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={`nav-tab-link${router.pathname === link.href ? ' nav-tab-active' : ''}`}
-              style={{ display: 'block', padding: '0.7rem 0.85rem', width: '100%', boxSizing: 'border-box' }}
-            >
-              {link.label}
-            </Link>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+          {navGroups.map((group, gi) => (
+            <div key={group.label}>
+              {gi > 0 && (
+                <div style={{
+                  margin: '0.5rem 0.85rem',
+                  borderTop: '1px solid var(--border)',
+                }} />
+              )}
+              <div style={{
+                padding: '0.4rem 0.85rem 0.1rem',
+                fontFamily: "'DM Mono', monospace",
+                fontSize: '0.55rem',
+                textTransform: 'uppercase',
+                letterSpacing: '0.14em',
+                color: 'var(--dim)',
+                opacity: 0.6,
+              }}>
+                {group.label}
+              </div>
+              {group.links.map(link => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={`nav-tab-link${router.pathname === link.href ? ' nav-tab-active' : ''}`}
+                  style={{ display: 'block', padding: '0.6rem 0.85rem', width: '100%', boxSizing: 'border-box' }}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
           ))}
         </div>
       </div>
@@ -155,10 +199,22 @@ export default function Layout({ children, wide }: { children: React.ReactNode; 
           gap: '0.25rem',
         }}
       >
-        {navLinks.map(link => (
-          <Link key={link.href} href={link.href} className={`nav-tab-link${router.pathname === link.href ? ' nav-tab-active' : ''}`}>
-            {link.label}
-          </Link>
+        {navGroups.map((group, gi) => (
+          <div key={group.label} style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+            {gi > 0 && (
+              <span style={{
+                display: 'inline-block', width: '1px',
+                background: 'rgba(255,255,255,0.1)',
+                height: '1.1rem', margin: '0 0.3rem',
+                flexShrink: 0,
+              }} />
+            )}
+            {group.links.map(link => (
+              <Link key={link.href} href={link.href} className={`nav-tab-link${router.pathname === link.href ? ' nav-tab-active' : ''}`}>
+                {link.label}
+              </Link>
+            ))}
+          </div>
         ))}
       </nav>
 
