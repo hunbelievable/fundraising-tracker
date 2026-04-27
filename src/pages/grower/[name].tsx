@@ -23,6 +23,10 @@ type Props = {
 
 const MILESTONES = [5_000, 10_000, 25_000, 50_000, 75_000, 100_000, 150_000, 200_000, 250_000, 300_000];
 
+const REPORT_FORM_BASE = 'https://docs.google.com/forms/d/e/1FAIpQLSf_WiDV_zH5JWesJN2PCeVBVr94owPb0PbBaxDZOz1C4AkytA/viewform';
+const REPORT_FIELD_GROWER = 'entry.733185049';
+const REPORT_FIELD_SOURCE = 'entry.144035609';
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = loadOmahaData();
   const names = Array.from(new Set(data.map(r => `${r.firstName} ${r.lastName}`)));
@@ -145,6 +149,39 @@ function StacheyBadge({ award }: { award: StacheyAwardRecord }) {
         {award.awardName}
       </div>
     </div>
+  );
+}
+
+function ReportIssueButton({ growerName }: { growerName: string }) {
+  const handleClick = () => {
+    const sourceUrl = typeof window !== 'undefined' ? window.location.href : '';
+    const params = new URLSearchParams({
+      usp: 'pp_url',
+      [REPORT_FIELD_GROWER]: growerName,
+      [REPORT_FIELD_SOURCE]: sourceUrl,
+    });
+    window.open(`${REPORT_FORM_BASE}?${params.toString()}`, '_blank', 'noopener,noreferrer');
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handleClick}
+      style={{
+        padding: '0.55rem 0.9rem',
+        background: 'transparent',
+        border: '1px solid rgba(255,255,255,0.15)',
+        borderRadius: '6px',
+        color: 'var(--muted)',
+        fontFamily: "'DM Mono', monospace",
+        fontSize: '0.65rem',
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+        cursor: 'pointer',
+      }}
+    >
+      Report an issue with this profile →
+    </button>
   );
 }
 
@@ -342,6 +379,13 @@ export default function GrowerProfilePage({
           ★ Selleck Year — raised $1,000 or more
         </div>
       )}
+
+      <div style={{ marginTop: '2.5rem', paddingTop: '1.25rem', borderTop: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
+        <div style={{ fontSize: '0.7rem', color: 'var(--dim)', maxWidth: '32rem' }}>
+          See something off? Records come from the Mustache Historian and aren&apos;t always complete. Let us know and an admin will follow up.
+        </div>
+        <ReportIssueButton growerName={name} />
+      </div>
     </Layout>
   );
 }
