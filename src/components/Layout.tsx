@@ -37,6 +37,12 @@ const navGroups = [
       { href: '/melee', label: 'Melee' },
     ],
   },
+  {
+    label: 'Info',
+    links: [
+      { href: '/about', label: 'About' },
+    ],
+  },
 ];
 
 // Flat list kept for any logic that needs it
@@ -98,7 +104,7 @@ export default function Layout({ children, wide }: { children: React.ReactNode; 
         }}>
           <Link href="/" style={{ textDecoration: 'none' }}>
             <div className="font-bebas" style={{ fontSize: '1.5rem', color: 'var(--gold)', lineHeight: 1 }}>
-              Stache Trophy Room
+              Unofficial Stache Trophy Room
             </div>
           </Link>
           <button
@@ -156,7 +162,7 @@ export default function Layout({ children, wide }: { children: React.ReactNode; 
       }}>
         <Link href="/" style={{ textDecoration: 'none' }}>
           <div className="font-bebas" style={{ fontSize: '2rem', color: 'var(--gold)', lineHeight: 1 }}>
-            Stache Trophy Room
+            Unofficial Stache Trophy Room
           </div>
           <div className="eyebrow" style={{ marginTop: '3px' }}>
             Fundraising · Hall of Fame · Records
