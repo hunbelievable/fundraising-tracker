@@ -1,58 +1,10 @@
 import { useState } from 'react';
+import type { GetStaticProps } from 'next';
 import Layout from '@/components/Layout';
-import meleeData from '../../data/melee.json';
+import { loadOmahaMelee } from 'mustache-historian/server';
+import type { MeleeData, MeleeYearEntry } from 'mustache-historian';
 
-interface R16Match {
-  p1: string;
-  p1Seed?: number;
-  p2: string;
-  p2Seed?: number;
-  winner: string;
-}
-
-interface QFMatch {
-  p1: string;
-  p2: string;
-  winner: string;
-}
-
-interface Region {
-  name: string | null;
-  r16: R16Match[];
-  qf: QFMatch;
-}
-
-interface Side {
-  topRegion: Region;
-  bottomRegion: Region;
-  sf: QFMatch;
-}
-
-interface PlayInBracket {
-  label: string;
-  participants: string[];
-  winner: string;
-}
-
-interface PlayIn {
-  rookie: PlayInBracket;
-  experienced: PlayInBracket;
-}
-
-interface YearData {
-  year: number;
-  champion: string;
-  notes: string;
-  sponsor: string | null;
-  bracket: {
-    left: Side;
-    right: Side;
-    final: QFMatch;
-  };
-  playIn: PlayIn | null;
-}
-
-const data = meleeData as { years: YearData[] };
+type YearData = MeleeYearEntry;
 
 function MatchBox({
   p1,
@@ -441,7 +393,15 @@ function YearBracket({ y }: { y: YearData }) {
   );
 }
 
-export default function MeleePage() {
+interface MeleePageProps {
+  data: MeleeData;
+}
+
+export const getStaticProps: GetStaticProps<MeleePageProps> = async () => {
+  return { props: { data: loadOmahaMelee() } };
+};
+
+export default function MeleePage({ data }: MeleePageProps) {
   const years = data.years.slice().reverse(); // newest first
   const [activeYear, setActiveYear] = useState(years[0].year);
   const activeData = years.find((y) => y.year === activeYear)!;
